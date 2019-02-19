@@ -1,0 +1,122 @@
+[{
+ "servicePermission": [
+     {
+        "id": 1.0,
+        "carPark": [{
+        "showCar": 0,
+        "addCar": 0,
+        "editCar": 0,
+        "delCar": 0  
+         }]
+     },
+     {
+        "id": 1.1,
+        "zone": [{
+            "showZone": 0,
+            "addZone": 0,
+            "editZone": 0,
+            "delZone": 0
+         }]
+        
+     },
+     {
+        "id": 1.2,
+        "level": [{
+            "showLevel": 0,
+            "addLevel": 0,
+            "editLevel": 0,
+            "delLevel":  0
+        }]
+     },
+     {
+        "id": 1.3,
+        "street": [{
+            "showStreet": 0,
+            "addStreet": 0,
+            "editStreet": 0,
+            "delStreet": 0
+        }]
+     },
+     {
+        "id": 1.4,
+        "zLevel": [{
+            "showZlevel": 0,
+            "addZlevel": 0,
+            "editZlevel": 0,
+            "delZlevel": 0
+        }]
+     },
+     {
+        "id": 1.5,
+        "bay": [{
+            "showBay": 0,
+            "addBay": 0,
+            "editBay": 0,
+            "delBay": 0
+        }]
+     },
+     {
+        "id": 1.6,
+        "voucher": [{
+            "showVoucher": 0,
+            "addVoucher": 0,
+            "editVoucher": 0,
+            "delVoucher": 0
+        }]
+     },
+     {
+        "id": 1.7,
+        "carProduct": [{
+            "showProduct": 0,
+            "addProduct": 0,
+            "editProduct": 0,
+            "delProduct": 0
+        }]
+     },
+     {
+        "id": 2.0,
+        "wheelMaster": [{
+            "showMaster": 0,
+            "addMaster": 0,
+            "editMaster": 0,
+            "delMaster": 0
+        }]
+     },
+     {
+        "id": 2.1,
+        "wheelLock": [{
+            "showLock": 0,
+            "addLock": 0,
+            "editLock": 0,
+            "delLock": 0
+        }]
+     },
+     {
+        "id": 2.2,
+        "wheelPole": [{
+            "showPole": 0,
+            "addPole": 0,
+            "editPole": 0,
+            "delPole": 0
+        }]
+     },
+     {
+        "id": 3.0,
+        "masterGate": [{
+            "showMaster": 0,
+            "addMaster": 0,
+            "editMaster": 0,
+            "delMaster": 0
+        }]
+     },
+     {
+        "id": 3.1,
+        "gates": [{
+            "showGates": 0,
+            "addGates": 0,
+            "editGates": 0,
+            "delGates": 0
+        }]
+     }
+ ]
+}]

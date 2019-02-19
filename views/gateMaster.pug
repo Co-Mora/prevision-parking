@@ -1,0 +1,9 @@
+extends layout
+
+block content
+   if isGateMaster
+    gate-master
+   else if isGate
+    gates
+   else if isAddGateMaster
+    add-gate-master

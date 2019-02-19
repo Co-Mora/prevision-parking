@@ -1,0 +1,62 @@
+doctype html
+html
+  head
+    title Car Park Aide
+    link(rel='shortcut icon', type="image/png", href="/images/icon.png")
+    //- link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css"')
+    link(rel='stylesheet', href='/stylesheets/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome/css/font-awesome.css')
+    link(rel='stylesheet', href='/stylesheets/css/plugins/morris/morris-0.4.3.min.css')
+    link(rel='stylesheet', href='/stylesheets/css/plugins/toastr/toastr.min.css')
+    //- link(rel='stylesheet', href='/stylesheets/js/plugins/gritter/jquery.gritter.css')
+    link(rel='stylesheet', href='/stylesheets/css/animate.css')
+    link(rel='stylesheet', href='/stylesheets/css/style.css')
+    link(rel='stylesheet', href='/stylesheets/css/plugins/footable/footable.core.css')
+  body(class=error ? 'gray-bg': '')
+    #app
+      block content
+  
+  // Mainly Scripts
+  script(src="/javascripts/js/jquery-3.1.1.min.js")
+  script(src="/javascripts/js/popper.min.js")
+  script(src="/javascripts/js/bootstrap.js")
+  script(src="/javascripts/js/plugins/metisMenu/jquery.metisMenu.js")
+  script(src="/javascripts/js/plugins/slimscroll/jquery.slimscroll.min.js")
+  
+  // Flot
+  script(src="/javascripts/js/plugins/flot/jquery.flot.js")
+  //- script(src="/javascripts/js/plugins/flot/jquery.flot.tooltip.min.j")
+  script(src="/javascripts/js/plugins/flot/jquery.flot.spline.js")
+  script(src="/javascripts/js/plugins/flot/jquery.flot.resize.js")
+  script(src="/javascripts/js/plugins/flot/jquery.flot.pie.js")
+  
+  // Peity
+  script(src="/javascripts/js/plugins/peity/jquery.peity.min.js")
+  script(src="/javascripts/js/demo/peity-demo.js")
+
+  //  Custom and plugin javascript
+  script(src="/javascripts/js/inspinia.js")
+  script(src="/javascripts/js/plugins/pace/pace.min.js")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js")
+
+  // jQuery UI
+  
+  script(src="/javascripts/js/plugins/jquery-ui/jquery-ui.min.js")
+
+  // GITTER
+  script(src="/javascripts/js/plugins/gritter/jquery.gritter.min.js")
+  // Sparkline
+  script(src="/javascripts/js/plugins/sparkline/jquery.sparkline.min.js")
+
+  //Sparkline demo data 
+  script(src="/javascripts/js/demo/sparkline-demo.js")
+
+  //ChartJS 
+  script(src="/javascripts/js/plugins/chartJs/Chart.min.js")
+  script(src="/javascripts/js/demo/chartjs-demo.js")
+
+  //Toastr 
+  script(src="/javascripts/js/plugins/toastr/toastr.min.js")
+  script(src="/javascripts/js/plugins/dataTables/datatables.min.js")
+  script(src="/javascripts/js/plugins/footable/footable.all.min.js")
+  script(src="/javascripts/bundle.js")
