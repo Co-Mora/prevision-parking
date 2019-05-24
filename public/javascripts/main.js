@@ -169,6 +169,7 @@ Vue.component('profile', require('./components/PageProfile/Profile.vue'));
 //Finance
 Vue.component('fund', require('./components/PageFinance/Fund.vue'));
 Vue.component('giro', require('./components/PageFinance/Giro.vue'));
+Vue.component('cash', require('./components/PageFinance/Cash.vue'));
 
 
 //Passcard

@@ -305,6 +305,7 @@ export default {
     },
     updateCity(value) {
       this.validated = false;
+      this.isBoxUpdated = true
       CarParkService.updateData(
         `country/${this.countryID}/state/${this.stateID}/city`,
         value,
@@ -315,7 +316,7 @@ export default {
       );
       this.loadData(this.countryID);
       this.filterByState(this.stateID);
-      this.getCity();
+      //this.getCity();
     },
     showSelectedCity() {
       this.selectedCity.forEach(el => {

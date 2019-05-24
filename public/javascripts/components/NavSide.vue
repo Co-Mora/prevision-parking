@@ -274,7 +274,7 @@
               <span class="fa arrow"></span>
             </a>
             <ul class="nav nav-second-level collapse">
-              <li :class="{ active: classGiro || classFinance }">
+              <li :class="{ active: classGiro || classFinance || classCash }">
                 <a href="#">
                   ParkBills
                   <span class="fa arrow"></span>
@@ -286,7 +286,7 @@
                   <li :class="{ active: classGiro }">
                     <a href="/transaction/giro">Giro</a>
                   </li>
-                  <li :class="{ active: '' }">
+                  <li :class="{ active: classCash }">
                     <a href="/transaction/cash">Cash</a>
                   </li>
                   <li :class="{ active: '' }">
@@ -336,6 +336,7 @@ export default {
     "classParker",
     "classFinance",
     "classGiro",
+    "classCash",
     "classBank",
     "classVoucherBuy",
     "classProduct",
@@ -401,7 +402,7 @@ export default {
     if (this.classProduct) {
       this.carparkActive = true;
     }
-    if (this.classFinance || this.classGiro) {
+    if (this.classFinance || this.classGiro || this.classCash) {
       this.finance = true;
     }
 
