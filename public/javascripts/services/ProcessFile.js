@@ -1,8 +1,10 @@
-export default {
-    processFile(file) {
+const API = require('../services/API');
 
-    },
-    handleFile() {
-        
-    }
-}
+const process = (URL, credentials) =>  {
+    return API('multipart/form-data').post(`${URL}`, credentials);
+};
+
+
+module.exports = {
+    process
+};

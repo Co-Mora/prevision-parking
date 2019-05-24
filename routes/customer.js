@@ -6,8 +6,8 @@ const jwtFileSys = require('../util/jwtFileSys')
 const customer = require('../controller/customer');
 
 
-router.get('/', auth, customer.customerController);
-router.get('/add', auth, customer.customerController);
+router.get('/', customer.customerController);
+router.get('/add', customer.customerController);
 
 
 module.exports = router;

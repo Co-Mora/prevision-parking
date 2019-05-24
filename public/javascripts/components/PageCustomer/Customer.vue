@@ -64,16 +64,17 @@
                         <div class="ibox ">
                             <div class="ibox-content">
                               <div class="row">
-                                <div class="col-lg-12">
-                                  <div class="input-group" style="margin-bottom: 20px">
-                                    <a href="/customers/add" class="btn btn-w-m btn-outline-primary btn-rounded">Create New Customer</a>
-                                  </div>
+                                <div class="col-sm-9 m-b-xs">
+                                    <select v-model="operatorID" class="form-control m-b" @change="loadData(1)">
+                                        <option disabled value="null" key="null">Please Select operator Name</option>
+                                        <option v-for="op in operators" :value="op.id" :key="op">{{op.name}}</option>
+                                    </select>
                                 </div>
-                                <div class="col-sm-12">
-                                  <div class="input-group" style="margin-bottom: 20px">
-                                    <input v-model="searchResult" @change="getSearchResult" placeholder="Search" type="text" class="form-control form-control-sm"><span class="input-group-append">
+                                <div class="col-sm-3">
+                                <!-- <div class="input-group" style="margin-bottom: 20px">
+                                  <input v-model="searchResult" @change="getSearchResult" placeholder="Search" type="text" class="form-control form-control-sm"><span class="input-group-append">
                                       <button type="button"  @click="getSearchResult()" class="btn btn-sm btn-success">Search</button></span>
-                                  </div>
+                                </div> -->
                                 </div>
                               </div>
                                 <div class="table-responsive">
@@ -86,9 +87,9 @@
                                                 <th data-hide="phone,tablet">National ID</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr v-for="cus in customers" :key="cus" class="gradeX"  v-if="result == true && errorResult === false">
-                                                <td class="center"><a data-toggle="modal" data-target="#myModal5" @click="viewCustomer(cus.id)">{{'Customer: ' + cus.id || 'Unknown'}}</a></td>
+                                        <tbody  v-if="result == true && errorResult === false">
+                                            <tr v-for="cus in customers" :key="cus" class="gradeX" >
+                                                <td class="center"><a data-toggle="modal" data-target="#myModal5" @click="viewCustomer(cus.id)">{{cus.id || 'Unknown'}}</a></td>
                                                 <td class="center">{{cus.name || 'Unknown'}}</td>
                                                 <td class="center">{{cus.contact1 || 'Unknown'}}</td>
                                                 <td class="center">{{cus.nationalID || 'Unknown'}}</td>
@@ -104,9 +105,7 @@
                                     </table>
                                     <div class="alert alert-primary col-sm-12 m-b-xs" v-show="errorResult === true" role="alert">{{message}}</div>
                                   <div class="alert alert-warning col-sm-12 m-b-xs" v-if="messageCustomer" role="alert">{{messageCustomer}}</div>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -131,7 +130,6 @@
 const NavSide = require('../NavSide.vue')
 const axios  = require('axios');
 const CarParkService = require('../../services/CarParkService')
-const searchResult = require('../../services/searchResult');
 
 
 export default {
@@ -147,29 +145,31 @@ export default {
             errorResult: false,
             mySearch: [],
           classCustomer: true,
+          operators: null,
+          operatorID: null,
           messageCustomer: null,
         };
     },
     methods: {
-      getSearchResult() {
-        if(this.searchResult.length === 0) {
-          this.errorResult = false;
-          this.message = "";
-          this.loadData();
-        }else {
-          searchResult.findSearchResult(`customer?search=`, this.searchResult).then(response => {
-            this.customers = response.data;
-            this.errorResult = false;
-            this.message = "";
-            this.result = true;
-            if (this.customers.length === 0) {
-              this.errorResult = true;
-              this.result = true;
-              this.message = "No data available.";
-            }
-          })
-         }
-      },
+    //   getSearchResult() {
+    //     if(this.searchResult.length === 0) {
+    //       this.errorResult = false;
+    //       this.message = "";
+    //       this.loadData();
+    //     }else {
+    //       searchResult.findSearchResult(`customer?search=`, this.searchResult).then(response => {
+    //         this.customers = response.data;
+    //         this.errorResult = false;
+    //         this.message = "";
+    //         this.result = true;
+    //         if (this.customers.length === 0) {
+    //           this.errorResult = true;
+    //           this.result = true;
+    //           this.message = "No data available.";
+    //         }
+    //       })
+    //      }
+    //   },
       viewCustomer(value) {
             CarParkService.viewCarPark(`customer`, value) .then(response => {
                 this.selectedCustomer = response.data;
@@ -181,11 +181,9 @@ export default {
                 this.customerName = el.name
             })
       },
-      deleteCustomer(value) {
-        CarParkService.deleteData(`customer`, value)
-      },
+     
       loadData() {
-        CarParkService.fetchAllData('customer') .then(response => {
+        CarParkService.fetchAllData(`operator/${this.operatorID}/customer`) .then(response => {
             this.customers = response.data;
             this.messageCustomer = '';
             if (this.customers.length === 0) {
@@ -194,12 +192,19 @@ export default {
         });
 
     },
+    filterOperator() {
+       CarParkService.fetchAllData(`operator`).then(response => {
+        this.operators = response.data
+        this.operatorID = response.data[1].id;
+        this.loadData()
+      });
+    }
     },
   components: {
     NavSide
   },
     mounted() {
-     this.loadData();
+     this.filterOperator();
     }
 };
 

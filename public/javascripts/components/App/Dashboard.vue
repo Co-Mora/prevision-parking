@@ -198,14 +198,10 @@
 
         },
         mounted() {
-          this.dashboard();
+          //this.dashboard();
 
 
         }
     }
 
 </script>
-
-<style scoped>
-
-</style>

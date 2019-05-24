@@ -115,8 +115,8 @@
                                   <th data-hide="phone,tablet">carpark Name</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr v-for="m in getMaster" :key="m" class="gradeX" v-if="result == true && errorResult === false">
+                                <tbody v-if="result == true && errorResult === false">
+                                <tr v-for="m in getMaster" :key="m" class="gradeX" >
                                   <td class="center"><a data-toggle="modal" data-target="#myModal5" @click="viewMaster(m.id)">{{'Master: ' + m.id || 'Unknown'}}</a></td>
                                   <td class="center">{{m.name || 'Unknown'}}</td>
                                   <td class="center">{{m.remark || 'Unknown'}}</td>
@@ -159,7 +159,6 @@
 const NavSide = require('../NavSide.vue')
 const axios  = require('axios');
 const CarParkService = require('../../services/CarParkService')
-const searchResult = require('../../services/searchResult');
 
 export default {
   name: "GateMaster",

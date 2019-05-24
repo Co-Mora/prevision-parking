@@ -9,7 +9,7 @@
           </div>
           <ul class="nav navbar-top-links navbar-right">
             <li>
-              <span class="m-r-sm text-muted welcome-message">Welcome {{email}}</span>
+              <span class="m-r-sm text-muted welcome-message">Welcome {{ email}}</span>
             </li>
 
             <li>
@@ -24,19 +24,24 @@
 </template>
 
 <script>
+
+
+const data = require('../../../scratch/userLogin.json');
+
 export default {
   name: 'NavBar',
   data() {
     return {
-      email: localStorage.getItem('email')
+      email: null,
     }
   },
   methods: {
     logout() {
-      localStorage.removeItem('isLogged');
-      localStorage.removeItem('token');
-      localStorage.removeItem('email');
+      
     }
+  },
+  mounted() {
+    this.email = data.email;
   }
 }
 </script>

@@ -12,7 +12,6 @@ module.exports.authController = (req, res, next) => {
     console.log(req.body);
     var loginUser = new LoginRequest(req.body);
     var tr = loginUser.handleLoginRequest()
-    console.log(tr);
     if(tr) {
         setTimeout(() => {
             return res.redirect('/')

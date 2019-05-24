@@ -87,8 +87,8 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr v-for="cus in customers" v-show="cus.isCompany === parseInt(query)" :key="cus" class="gradeX"  v-if="result == true && errorResult === false">
+                                        <tbody v-if="result == true && errorResult === false">
+                                            <tr v-for="cus in customers" v-show="cus.isCompany === parseInt(query)" :key="cus" class="gradeX"  >
                                                 <td class="center"><a data-toggle="modal" data-target="#myModal5" @click="viewCustomer(cus.id)">{{'Customer: ' + cus.id || 'Unknown'}}</a></td>
                                                 <td class="center">{{cus.name || 'Unknown'}}</td>
                                                 <td class="center">{{cus.contact1 || 'Unknown'}}</td>

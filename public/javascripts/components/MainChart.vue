@@ -1,69 +1,50 @@
 <template>
-    <div>
-        <NavSide />
-        <div id="page-wrapper" class="gray-bg">
+  <div>
+    <NavSide/>
+    <div id="page-wrapper" class="gray-bg">
+      <NavBar/>
 
-        <div class="row border-bottom">
-        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-          <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-          </div>
-        <div class="navbar-header">
-            </div>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li>
-                        <span class="m-r-sm text-muted welcome-message">Welcome</span>
-                    </li>
-
-                    <li>
-                        <a @click="logout" href="/login">
-                            <i class="fa fa-sign-out"></i> Log out
-                        </a>
-                    </li>
-                </ul>
-        </nav>
-        </div>
       <div class="wrapper wrapper-content animated fadeInRight">
-         
-        </div>
-        <div class="footer">
-            <div class="float-right">
-                10GB of <strong>250GB</strong> Free.
-            </div>
-            <div>
-                <strong>Copyright</strong> CarPark Company &copy; 2018
-            </div>
-        </div>
-
-        </div>
+        <Dashboardv2/>
+      </div>
+      <MainFooter/>
     </div>
+  </div>
 </template>
 
 <script>
-import NavSide from './NavSide.vue'
+const NavSide = require("./NavSide.vue");
+const NavBar = require("./NavBar.vue");
+const Dashboardv2 = require("./App/Dashboardv2.vue");
+const MainFooter = require("./MainFooter.vue");
+
 // import Dashboard from './Dashboard.vue'
 
 export default {
-  name: 'MainChart',
-  data () {
-    return {
-        
-    }
+  name: "MainChart",
+  data() {
+    return {};
   },
   methods: {
-    // logout() {
-    //   localStorage.removeItem('isLogged');
-    //   localStorage.removeItem('token');
-    // }
+    
   },
   components: {
     NavSide,
-    // Dashboard
+    NavBar,
+    Dashboardv2,
+    MainFooter
   },
-  mouted() {
-      console.log('MainChart')
+
+  mounted() {
+    if (window.location.pathname.startsWith('/?email')) {
+        const data = window.location.pathname.split('&')
+        const jwt = data[1].split('=');
+        const email = data[0].split('=');
+        const orginalEmail = email[1].replace('&#x40;', '@')
+        const token = jwt[1]
+         var data = JSON.stringify({ token: token, email: decodeURIComponent(orginalEmail) });
+        localStorage.setItem("userVerify", data);
+    }
   }
-}
-
-
+};
 </script>

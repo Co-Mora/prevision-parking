@@ -1001,7 +1001,7 @@ h5 {
 .nav-header {
   padding: 33px 25px;
   background-color: #2f4050;
-  background-image: url("patterns/5.png");
+  background-image: url("patterns/header-profile-skin-1.png");
 }
 .caret {
   display: inline-block;
@@ -1036,7 +1036,9 @@ ul.nav-second-level {
   color: #DFE4ED;
 }
 .nav-header .text-muted {
-  color: #8095a8 !important;
+  color: #fff !important;
+  text-align: center;
+  margin: 10px 28px 0 0 ;
 }
 .minimalize-styl-2 {
   padding: 4px 12px;
@@ -8722,7 +8724,7 @@ body.rtls.top-navigation .footer.fixed {
 }
 .yellow-skin {
   font-weight: 600;
-  background: url("patterns/header-profile-skin-3.png") repeat scroll 0 100%;
+  background: url("patterns/header-profile-skin-1.png") repeat scroll 0 100%;
 }
 .yellow-skin:hover {
   background: #ce8735;
@@ -8779,11 +8781,11 @@ body.rtls.top-navigation .footer.fixed {
   color: #fff;
 }
 .skin-1 .navbar-minimalize {
-  background: #0e9aef;
-  border-color: #0e9aef;
+  background: #3498db;
+  border-color: #3498db;
 }
 body.skin-1 {
-  background: #3e495f;
+  background: #3498db;
 }
 .skin-1 .navbar-static-top {
   background: #ffffff;
@@ -8860,11 +8862,11 @@ body.skin-2 {
   background: #23c6c8 !important;
 }
 .skin-2 .nav-header {
-  background-color: #23c6c8;
-  background-image: url('patterns/header-profile-skin-2.png');
+  background-color: #3498db;
+  background-image: url('patterns/header-profile-skin-1.png');
 }
 .skin-2.mini-navbar .nav-second-level {
-  background: #ededed;
+  background: #3498db;
 }
 .skin-2 .breadcrumb {
   background: transparent;
@@ -8904,8 +8906,14 @@ body.skin-2 {
   background: #213a53;
 }
 .skin-2 .navbar-minimalize {
-  background: #23c6c8;
-  border-color: #23c6c8;
+  background: #3498db;
+  border-color: #3498db;
+}
+
+
+.navbar-minimalize {
+  background: #3498db;
+  border-color: #3498db;
 }
 .skin-2 .border-bottom {
   border-bottom: none !important;
@@ -9014,7 +9022,7 @@ body.boxed-layout.skin-3 #wrapper {
 }
 .skin-3 .nav-header {
   background-color: #ecba52;
-  background-image: url('patterns/header-profile-skin-3.png');
+  background-image: url('patterns/header-profile-skin-1.png');
 }
 .skin-3.mini-navbar .nav-second-level {
   background: #3e2c42;
@@ -9041,8 +9049,8 @@ body.boxed-layout.skin-3 #wrapper {
   color: #fff;
 }
 .skin-3 .navbar-minimalize {
-  background: #ecba52;
-  border-color: #ecba52;
+  background: #3498db;
+  border-color: #3498db;
 }
 body.skin-3 {
   background: #3e2c42;
@@ -9105,7 +9113,7 @@ body.md-skin {
   background-color: #ffffff;
 }
 .md-skin .nav-header {
-  background: url("patterns/4.png") no-repeat;
+  background: url("patterns/header-profile-skin-1.png") no-repeat;
 }
 .md-skin .label,
 .md-skin .badge {

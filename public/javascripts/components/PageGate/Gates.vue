@@ -165,7 +165,6 @@
 const NavSide = require('../NavSide.vue')
 const axios  = require('axios');
 const CarParkService = require('../../services/CarParkService')
-const searchResult = require('../../services/searchResult');
 
 export default {
   name: "Gates",

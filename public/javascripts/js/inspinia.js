@@ -259,6 +259,7 @@ $(document).ready(function () {
 function localStorageSupport() {
     return (('localStorage' in window) && window['localStorage'] !== null)
 }
+$('.chosen-select').chosen({width: "100%"});
 
 // For demo purpose - animation css script
 function animationHover(element, animation) {
@@ -276,6 +277,8 @@ function animationHover(element, animation) {
 }
 
 function SmoothlyMenu() {
+
+    
     if (!$('body').hasClass('mini-navbar') || $('body').hasClass('body-small')) {
         // Hide menu in order to smoothly turn on when maximize menu
         $('#side-menu').hide();

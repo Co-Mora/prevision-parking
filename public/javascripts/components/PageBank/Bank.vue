@@ -83,8 +83,8 @@
                                                 <th data-hide="phone,tablet">Image</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr v-for="b in banks" :key="b" class="gradeX" v-if="result == true && errorResult === false">
+                                        <tbody  v-if="result == true && errorResult === false">
+                                            <tr v-for="b in banks" :key="b" class="gradeX">
                                                 <td class="center"><a data-toggle="modal" data-target="#myModal5" @click="viewBank(b.id)">{{'Bank: ' + b.id || 'Unknown'}}</a></td>
                                                 <td class="center">{{b.name || 'Unknown'}}</td>
                                                 <td class="center">{{b.image || 'Unknown'}}</td>

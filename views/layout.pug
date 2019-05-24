@@ -1,22 +1,32 @@
 doctype html
 html
   head
-    title Car Park Aide
+    title Parking 101
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel='shortcut icon', type="image/png", href="/images/icon.png")
     //- link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css"')
     link(rel='stylesheet', href='/stylesheets/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/font-awesome/css/font-awesome.css')
     link(rel='stylesheet', href='/stylesheets/css/plugins/morris/morris-0.4.3.min.css')
     link(rel='stylesheet', href='/stylesheets/css/plugins/toastr/toastr.min.css')
+    link(rel='stylesheet', href='/stylesheets/css/plugins/chosen/bootstrap-chosen.css')
+    link(rel='stylesheet', href='/stylesheets/css/plugins/select2/select2.min.css')
+    //- link(rel='stylesheet', href='/stylesheets/css/plugins/switchery/switchery.css')
+
+
     //- link(rel='stylesheet', href='/stylesheets/js/plugins/gritter/jquery.gritter.css')
     link(rel='stylesheet', href='/stylesheets/css/animate.css')
     link(rel='stylesheet', href='/stylesheets/css/style.css')
+
     link(rel='stylesheet', href='/stylesheets/css/plugins/footable/footable.core.css')
   body(class=error ? 'gray-bg': '')
     #app
       block content
   
   // Mainly Scripts
+  
+
   script(src="/javascripts/js/jquery-3.1.1.min.js")
   script(src="/javascripts/js/popper.min.js")
   script(src="/javascripts/js/bootstrap.js")
@@ -54,9 +64,17 @@ html
   //ChartJS 
   script(src="/javascripts/js/plugins/chartJs/Chart.min.js")
   script(src="/javascripts/js/demo/chartjs-demo.js")
+    //- script(src="/javascripts/js/plugins/switchery/switchery.js")
+
 
   //Toastr 
   script(src="/javascripts/js/plugins/toastr/toastr.min.js")
   script(src="/javascripts/js/plugins/dataTables/datatables.min.js")
   script(src="/javascripts/js/plugins/footable/footable.all.min.js")
   script(src="/javascripts/bundle.js")
+  script(src="/javascripts/js/plugins/select2/select2.full.min.js")
+  script(src="/javascripts/js/plugins/chosen/chosen.jquery.js")
+  script(src="/javascripts/js/script.js")
+
+
+  

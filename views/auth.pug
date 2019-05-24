@@ -7,8 +7,8 @@ block content
         div
           img(class="-square-full", alt="image", width="100", src="/images/icon.png")
           h1.logo-name
-          h2 Park Aide
-          p Welcome to Car Park Aide.
+          h2(style="color:#57606f; font-size:45px; font-weight: 400") PARKING 101
+          p(style="font-weight:600") Welcome to Parking 101
           form(action=`/login/auth` method="POST")
             div.form-group
               input.form-control(type="email" name="email"  placeholder="Email Address" required="")
@@ -18,9 +18,9 @@ block content
             a(href="#") 
               p.text-muted.text-center=error
               small Forgot password?
-              p.text-muted.text-center 
-                small Do not have an account?
+              //- p.text-muted.text-center 
+              //-   small Do not have an account?
               
-              a.btn.btn-sm.btn-white.btn-block(href="/register/me") Create an account
+              //- a.btn.btn-sm.btn-white.btn-block(href="/register/me") Register
           p.m-t
-            small Car Park Aide web app &copy; 2018
+            small Copyright PARKAIDE &copy; 2018

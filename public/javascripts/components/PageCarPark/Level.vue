@@ -111,9 +111,12 @@
 
                         <div class="ibox-content">
                             <div class="row">
-                              <div class="input-group" style="margin: 0 0 20px 16px">
-                                  <a href="/carparks/level/add" class="btn btn-w-m btn-rounded btn-outline-primary" >Create New Level</a>
-                              </div>
+                               <div class="col-sm-9 m-b-xs">
+                                    <select v-model="operatorID" class="form-control m-b" @change="loadData">
+                                        <option disabled value="null" key="null">Please Select operator Name</option>
+                                        <option v-for="op in operators" :value="op.id" :key="op">{{op.name}}</option>
+                                    </select>
+                                </div>
                               <div class="col-sm-9 m-b-xs">
                                 <select v-model="carparkID" class="form-control m-b" @change="addLevel">
                                     <option disabled selected value="null" key="null">Please Select Carpark Name</option>
@@ -188,13 +191,19 @@ export default {
   data () {
     return {
       carpark: null,
-      levels: null,
+      levels: [],
       selectedLevel: null,
       carparkID: 'null',
       carparkName: null,
       validated: false,
       messageLevel: null,
       levelID: null,
+
+      levelAdmin: [],
+
+
+      operators: null, 
+      operatorID: null,
 
       result: true,
       message: '',
@@ -213,7 +222,7 @@ export default {
         this.addLevel()
       } else {
           searchResult.findSearchResult(`carpark/${this.carparkID}/level?search=`, this.searchResult).then(response => {
-            this.levels = response.data.result;
+            this.levels = response.data;
             this.errorResult = false
             this.message = "";
             this.result = true;
@@ -225,34 +234,10 @@ export default {
         })
       }
     },
-    // processFile() {
-    //   let formData = new FormData();
-    //   formData.append('imgUploader', this.file);
-    //   axios.post( 'https://sys2.parkaidemobile.com/api/images/upload',
-    //             formData,
-    //             {
-    //             headers: {
-    //                 'Content-Type': 'multipart/form-data',
-    //                 'x-access-token': JSON.parse(this.token)
-    //             }
-    //           }
-    //         ).then(response => {
-    //           this.image = response.data
-    //           console.log('SUCCESS!!', response.data);
-    //     })
-    //     .catch(function(ex){
-    //       console.log(ex);
-    //     });
-
-    // },
-    // handleFileUpload() {
-    //    this.file = this.$refs.file.files[0];
-    //    console.log("File:", this.file)
-    //    this.processFile();
-    // },
     addLevel() {
-        CarParkService.viewData(`carpark/${this.carparkID}/level`).then(response => {
-            this.levels = response.data.result
+        CarParkService.fetchAllData(`operator/${this.operatorID}/carpark/${this.carparkID}/level`).then(response => {
+            this.levels = response.data
+            console.log(this.levels)
             this.messageLevel = '';
             if(this.levels.length === 0) {
               this.messageLevel = "No data available.";
@@ -266,21 +251,18 @@ export default {
         
     },
     viewLevel(value) {
-         CarParkService.viewCarPark(`carpark/${this.carparkID}/level`, value).then(response => {
-            this.selectedLevel = response.data.result;
+         CarParkService.viewCarPark(`operator/${this.operatorID}/carpark/${this.carparkID}/level`, value).then(response => {
+            this.selectedLevel = response.data;
             if (this.selectedLevel.length === 0) {
                 this.message = "No Levels Found";
             }
         });
     },
-    deleteLevel(value) {
-        CarParkService.deleteData(`carpark/${this.carparkID}/level`, value)
-    },
     updateLevel(value) {
         this.validated = true;
         document.getElementById('myModalUpdate').style.display = "none";
 
-        CarParkService.updateData(`carpark/${this.carparkID}/level`, value, qs.stringify({
+        CarParkService.updateData(`operator/${this.operatorID}/carpark/${this.carparkID}/level`, value, qs.stringify({
             name: this.name,
             image: this.image,
             ReservedCount: this.reservedCount,
@@ -304,18 +286,25 @@ export default {
       
     },
     loadData() {
-        CarParkService.fetchAllData('carpark').then(response => {
+        CarParkService.fetchAllData(`operator/${this.operatorID}/carpark`).then(response => {
         this.carpark = response.data.result
         this.carparkID = response.data.result[0].id;
         this.addLevel()
       })
     },
+     filterOperator() {
+                CarParkService.fetchAllData('operator').then(response => {
+                    this.operators = response.data
+                    this.operatorID = response.data[1].id
+                    this.loadData()
+                });
+            },
   },
   components: {
     NavSide
   },
   mounted () {
-      this.loadData()
+      this.filterOperator()
   }
 
 

@@ -3,7 +3,13 @@ extends layout
 block content
    if isCountry
       country
-   else if isCity
+   if isCountryAdd
+      add-country
+   if isCity
       city
-   else if isState
+   if isCityAdd
+      add-city
+   if isState
       state
+   if isStateAdd
+      add-state

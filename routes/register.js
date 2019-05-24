@@ -11,6 +11,16 @@ router.get('/me', (req, res) => {
 
 });
 
+router.get('/thank_you', (req, res) => {
+
+    res.render('greeting', {
+        title: "Car Park Aide",
+        error: req.url === '/thank_you' ? 'Error Ocured' : ''
+
+    })
+
+});
+
 router.post('/auth', (req, res) => {
     var registerUser = new RegisterRequest(req.body);
     const result = registerUser.handleRegisterRequest();

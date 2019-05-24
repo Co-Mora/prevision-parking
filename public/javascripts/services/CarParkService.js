@@ -1,72 +1,78 @@
 const API = require('../services/API')
 
 const swal = require('sweetalert2')
+
+
+
 const fetchAllData = (URL) => {
-  return API().get(`${URL}`);
+  return API('application/x-www-form-urlencoded').get(`${URL}`);
 };
 
 const createData = (URL, credentials) => {
-  API().post(`${URL}`, credentials).then(response => {
-    if(response.status === 200) {
+  API('application/x-www-form-urlencoded').post(`${URL}`, credentials).then(response => {
+    if (response.status === 200) {
       setTimeout(() => {
         swal({
           title: 'Add it successfully',
           icon: 'success'
         })
-      }, 200);
-      setTimeout(() => {
-        //window.location.href = `/`
-      }, 200)
+      }, 50);
     } else {
       setTimeout(() => {
         swal({
           title: 'Data Error',
           icon: 'error'
         })
-      }, 200)
+      }, 50)
     }
   });
 };
 
+const verifyUser = (URL, credentials) => {
+  return API('application/x-www-form-urlencoded').post(`${URL}`, credentials)
+
+};
+
+
 const updateData = (URL, value, credentials) => {
   $("#myModalUpdate").modal("hide");
-  return API().put(`${URL}/${value}`, credentials).then(response => {
+  return API('application/x-www-form-urlencoded').put(`${URL}/${value}`, credentials).then(response => {
     if (response.status == 200) {
       setTimeout(() => {
         swal({
           title: 'Update it successfully',
           icon: 'success'
         })
-      }, 200);
-      setTimeout(() => {
-        window.location.href = '/carparks/all'
-      }, 1000)
+      }, 50);
     }
   }).catch(error => {
     if (error) {
       setTimeout(() => {
         swal({
-          title: 'Error occurred',
+          title: error.message,
           icon: 'error'
         })
-      }, 100)
+      }, 50)
     }
 
   });
 
 }
 
+
+
+
 const deleteData = (URL, value) => {
   $("#myModal5").modal("hide");
+  return API('application/x-www-form-urlencoded').delete(`${URL}/${value}`).then(response => {
 
-  return API().delete(`${URL}/${value}`).then(response => {
-
-    if(response.status == 200) {
+    if (response.status == 200) {
       setTimeout(() => {
         swal({
           title: 'Delete it successfully',
           icon: 'success'
-        })}, 200);
+        })
+      }, 200);
       setTimeout(() => {
         window.location.href = '/carparks'
       }, 1000)
@@ -100,5 +106,6 @@ module.exports = {
   updateData,
   deleteData,
   viewCarPark,
-  viewData
+  viewData,
+  verifyUser
 }
