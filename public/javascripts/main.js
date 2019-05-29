@@ -170,6 +170,7 @@ Vue.component('profile', require('./components/PageProfile/Profile.vue'));
 Vue.component('fund', require('./components/PageFinance/Fund.vue'));
 Vue.component('giro', require('./components/PageFinance/Giro.vue'));
 Vue.component('cash', require('./components/PageFinance/Cash.vue'));
+Vue.component('cheque', require('./components/PageFinance/Cheque.vue'));
 
 
 //Passcard
@@ -179,6 +180,7 @@ Vue.component('all-passcard', require('./components/PagePasscard/AllPasscard.vue
 Vue.component('verify-user', require('./components/VerifyUser/Verify.vue'));
 
 Vue.component('operator', require('./components/PageBusiness/CarParkOperator.vue'));
+Vue.component('subscriber', require('./components/PageSubscriber/Subscriber.vue'));
 
 
 //Register

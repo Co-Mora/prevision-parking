@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="modal inmodal" id="myModalView" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
+    <div class="modal inmodal" id="myModalView" tabindex="-1" role="dialog" aria-hidden="true" >
+      <div class="modal-dialog" >
         <div class="modal-content animated bounceInRight">
           <div class="modal-header">
             <button type="button" @click="cancelModal" class="close" data-dismiss="modal">
@@ -133,8 +133,13 @@ export default {
       
   },
   methods: {
+    closeModal() {
+      console.log("Closed")
+    },
     cancelModal() {
+
       this.$emit("clicked-cancel", false);
+      
     },
     UpdateItem() {
       $("#myModalView").modal("hide");
@@ -155,7 +160,6 @@ export default {
     },
     loadData() {
       DateFormat.dateProcees(this.dataOperator);
-
       this.dataOperator.forEach(el => {
         this.operatorID = el.id;
         this.code = el.code;
@@ -167,15 +171,8 @@ export default {
         this.dateCreated = el.createDate;
       });
     },
-    loadCarPark(value) {
-      CarParkService.fetchAllData(`carpark`).then(response => {
-        this.carpark = response.data.result;
-        this.showSelected(value);
-      });
-    }
   },
   mounted() {
-      
     $("#myModalView").modal("show");
     this.loadData();
   }

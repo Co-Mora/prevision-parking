@@ -4,7 +4,7 @@
       <nav-side :classCheque="classCheque"/>
       <div id="page-wrapper" class="gray-bg">
         <NavBar/>
-        <div class="ibox-title">Home / Transaction / ParkBills / Cash</div>
+        <div class="ibox-title">Home / Transaction / ParkBills / Cheque</div>
         <div class="wrapper wrapper-content animated fadeInRight">
           <div class="row">
             <div class="col-lg-12">
@@ -52,31 +52,34 @@
                           <tr>
                             <th>NO.</th>
                             <th>Date</th>
-                            <th>Giro Date</th>
+                            <th>Cheque Date</th>
                             <th>Transaction ID</th>
-                            <th>Giro Transaction Code</th>
-                            <th>Ref. No.</th>
+                            <th>Bank Code</th>
+                            <th>Cheque No</th>
+                            <th>Ref. No</th>
                             <th>Remark</th>
                             <th>Staff No.</th>
                             <th>Staff Name</th>
                             <th>Amount</th>
                             <th>Status</th>
+                            <th>Receipt No.</th>
                           </tr>
                         </thead>
                         <tbody v-if="result == true && errorResult === false">
                           <tr v-for="(data, index) in dataSource" :key="index" class="gradeX">
                             <td class="center">{{data.count}}</td>
                             <td class="center">{{data.createDate || 'Unknown'}}</td>
-                            <td class="center">{{data.Date}}</td>
+                            <td class="center">{{data.ChequeDate}}</td>
                             <td class="center">{{data.TransId}}</td>
-                            <td class="center">{{data.Code}}</td>
+                            <td class="center">{{data.BankCode}}</td>
+                            <td class="center">{{data.ChequeNumber}}</td>
                             <td class="center">{{data.RefNo}}</td>
                             <td class="center">{{'N/A'}}</td>
                             <td class="center">{{'N/A'}}</td>
                             <td class="center">{{'N/A'}}</td>
                             <td class="center">{{data.Amount || 'N/A'}}</td>
-
                             <td class="center">{{data.Status ? 'Success' : 'Failed'}}</td>
+                            <td class="center">{{'N/A'}}</td>
                           </tr>
                         </tbody>
                         <tfoot>
@@ -121,7 +124,6 @@ const MainFooter = require("../MainFooter.vue");
 const DateFormat = require("../../services/DateFormat");
 const Sequence = require("../../services/Sequence");
 const SearchData = require("../../services/SearchData");
-
 export default {
   name: "Cheque",
   data() {
@@ -166,25 +168,25 @@ export default {
         this.loadData(1);
         return 0;
       }
-      SearchData.findSearchResult(`fund/cheque?search=${this.searchResult}`).then(
-        response => {
-          this.dataSource = response.data.result;
-          DateFormat.dateProcees(this.dataSource);
-          Sequence.dataSequences(this.dataSource, 1, this.count);
+      SearchData.findSearchResult(
+        `fund/check?search=${this.searchResult}`
+      ).then(response => {
+        this.dataSource = response.data.result;
+        DateFormat.dateProcees(this.dataSource);
+        Sequence.dataSequences(this.dataSource, 1, this.count);
 
-          this.errorResult = false;
-          this.message = "";
+        this.errorResult = false;
+        this.message = "";
+        this.result = true;
+        if (this.dataSource.length === 0) {
+          this.errorResult = true;
           this.result = true;
-          if (this.dataSource.length === 0) {
-            this.errorResult = true;
-            this.result = true;
-            this.message = "No data available.";
-          }
+          this.message = "No data available.";
         }
-      );
+      });
     },
     loadData(value = 1) {
-      CarParkService.fetchAllData(`fund/cheque?page=${value}&sort=createDate`)
+      CarParkService.fetchAllData(`fund/check?page=${value}&sort=createDate`)
         .then(response => {
           if (response.data.result.length === 0) {
             this.dataSource = [];
@@ -212,6 +214,14 @@ export default {
   },
   mounted() {
     this.loadData();
+    axios
+      .get(
+        "https://sys2.parkaidemobile.com/3d2af816-de57-488a-8af2-59182e4cf691.html"
+      )
+      .then(function(response) {
+        // handle success
+        console.log(response);
+      });
   }
 };
 </script>

@@ -36,6 +36,18 @@
               <span class="nav-label">Dashboard</span>
             </a>
           </li>
+          <li :class="{ active: subscriber }">
+            <a :class="{ active: classSubscriber }" href="#">
+              <i class="fa fa-user"></i>
+              <span class="nav-label">Subscriber</span>
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="nav nav-second-level collapse">
+              <li :class="{ active: classSubscriber }">
+                <a href="/subscriber">Subscriber</a>
+              </li>
+            </ul>
+          </li>
            <li :class="{ active: operator }">
             <a :class="{ active: classOperator }" href="#">
               <i class="fa fa-suitcase"></i>
@@ -56,6 +68,7 @@
               </li>
             </ul>
           </li>
+          
           <li :class="{ active: carparkActive }">
             <a :class="{ active: carpark }" href="#">
               <i class="fa fa-car"></i>
@@ -274,7 +287,7 @@
               <span class="fa arrow"></span>
             </a>
             <ul class="nav nav-second-level collapse">
-              <li :class="{ active: classGiro || classFinance || classCash }">
+              <li :class="{ active: classGiro || classFinance || classCash || classCheque }">
                 <a href="#">
                   ParkBills
                   <span class="fa arrow"></span>
@@ -289,7 +302,7 @@
                   <li :class="{ active: classCash }">
                     <a href="/transaction/cash">Cash</a>
                   </li>
-                  <li :class="{ active: '' }">
+                  <li :class="{ active: classCheque }">
                     <a href="/transaction/cheque">Cheque</a>
                   </li>
                 </ul>
@@ -337,13 +350,15 @@ export default {
     "classFinance",
     "classGiro",
     "classCash",
+    "classCheque",
     "classBank",
     "classVoucherBuy",
     "classProduct",
     "classUsers",
     "classpassCardType",
     "classpassCardAll",
-    'classOperator'
+    'classOperator',
+    "classSubscriber"
   ],
 
   data() {
@@ -360,6 +375,7 @@ export default {
       gateMaster: null,
       advert: null,
       customer: null,
+      subscriber: null,
       passType: null,
       staff: null,
       parker: null,
@@ -376,6 +392,9 @@ export default {
     }
   },
   mounted() {
+    if(this.classSubscriber) {
+      this.subscriber = true;
+    }
     if (this.classOperator) {
       this.operator = true;
     }
@@ -402,7 +421,7 @@ export default {
     if (this.classProduct) {
       this.carparkActive = true;
     }
-    if (this.classFinance || this.classGiro || this.classCash) {
+    if (this.classFinance || this.classGiro || this.classCash || this.classCheque) {
       this.finance = true;
     }
 

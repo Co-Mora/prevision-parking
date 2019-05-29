@@ -6,7 +6,6 @@
       @clicked-cancel="modalFunCancel"
       @updatedItem="updatedOperator"
       :dataOperator="dataOperator"
-      
     />
     <AddOperator
       v-if="isBoxOpenAdd"
@@ -188,7 +187,6 @@ export default {
     createdOperator(value) {
       this.isBoxOpenAdd = value;
       this.loadData(1);
-
     },
     getSearchResult() {
       if (this.searchResult.length === 0) {
@@ -219,6 +217,9 @@ export default {
         this.dataOperator = response.data;
         this.isBoxOpen = true;
       });
+          this.isBoxOpen = false;
+      $("#myModalView").modal("hide");
+
     },
     createModal() {
       $("#myModalAdd").modal("show");

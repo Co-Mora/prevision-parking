@@ -18,6 +18,11 @@ const financeController = (req, res) => {
             isCash: true
         })
     }
+    if(req.url === '/cheque') {
+        res.render('finance', {
+            isCheque: true
+        })
+    }
     if(req.params.id) {
         res.render('finance', {
             isFinance: false

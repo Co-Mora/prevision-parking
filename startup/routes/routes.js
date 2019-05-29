@@ -41,6 +41,7 @@ const operatorRoute = require('../../routes/operator');
 
 const passcardRoute = require('../../routes/passcard');
 
+const subscriberRoute = require('../../routes/subscriber');
 
 
 module.exports = function (app) {
@@ -56,8 +57,9 @@ module.exports = function (app) {
     app.use('/report/movement', reportMoveRoute)
     app.use('/verify', verifyRoute)
     app.use('/business', operatorRoute)
-
     app.use('/season', seasonRouter)
+
+    app.use('/subscriber', subscriberRoute)
     app.use('/transaction', financeRoute)
     app.use('/passcard', passcardRoute)
 

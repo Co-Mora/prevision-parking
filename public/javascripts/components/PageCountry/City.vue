@@ -366,7 +366,6 @@ export default {
         } else {
           this.countryID = value;
           if (!this.isBoxUpdated) {
-            console.log("HALLLLLLLO");
             this.filterByState();
           }
         }
